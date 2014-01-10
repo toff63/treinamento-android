@@ -1,6 +1,7 @@
 package com.example.horastrabalhadas;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -33,9 +34,18 @@ public class MainActivity extends Activity {
 		super.onStart();
 		Log.d("CHANGED", "Application started " + ++counterStart + " times");
 		Toast.makeText(getApplicationContext(), "Application started " + counterStart + " times", Toast.LENGTH_SHORT).show();
-		fillFormBasedOnPreferences();
+		if(pref.getString(this, PreferenceKeys.NAME) != null && pref.getString(this, PreferenceKeys.PASSWORD) != null){
+			startActivity(getIntent(fieldAccess.getTextById(this, R.id.nome), fieldAccess.getTextById(this, R.id.senha)));
+		} else 	fillFormBasedOnPreferences();
 	}
 
+	private Intent getIntent(String name, String password) {
+		Intent intent = new Intent(getBaseContext(), FormResultActivity.class);
+		intent.putExtra("name", name);
+		intent.putExtra("senha", password);
+		return intent;
+	}
+	
 	private void fillFormBasedOnPreferences() {
 		fillFromPreference(PreferenceKeys.NAME, R.id.nome);
 		fillFromPreference(PreferenceKeys.PASSWORD, R.id.senha);

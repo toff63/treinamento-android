@@ -30,19 +30,19 @@ public class TaskFormActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				if(isInvalid((EditText) findViewById(R.id.task_description)) ){
-					Toast.makeText(getApplicationContext(), R.string.description_missing, Toast.LENGTH_SHORT).show();
-				}
-				else {
-					close();
-				}
+				if(isInvalid((EditText) findViewById(R.id.task_description)) ) Toast.makeText(getApplicationContext(), R.string.description_missing, Toast.LENGTH_SHORT).show();
+				else saveAndClose();
 			}
 
-			private void close() {
-				taskDao.save(getApplicationContext(), getTask(ac));
-				Log.i("TASKS", taskDao.list(getApplicationContext()).toString());
+			private void saveAndClose() {
+				save(ac);
 				Toast.makeText(getApplicationContext(), "Task added", Toast.LENGTH_SHORT).show();
 				finish();
+			}
+
+			private void save(final Activity ac) {
+				taskDao.save(getApplicationContext(), getTask(ac));
+				Log.i("TASKS", taskDao.list(getApplicationContext()).toString());
 			}
 
 			private Task getTask(final Activity ac) {
