@@ -1,16 +1,14 @@
 package com.example.horastrabalhadas;
 
-import com.example.horastrabalhadas.keys.PreferenceKeys;
-import com.example.horastrabalhadas.utils.SharedPreferenceUtil;
-import com.example.horastrabalhadas.utils.UIFieldAccess;
-
 import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.widget.Toast;
+
+import com.example.horastrabalhadas.keys.PreferenceKeys;
+import com.example.horastrabalhadas.utils.SharedPreferenceUtil;
+import com.example.horastrabalhadas.utils.UIFieldAccess;
 
 public class MainActivity extends Activity {
 
